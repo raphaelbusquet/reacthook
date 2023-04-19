@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route, Link, } from 'react-router-dom';
 import './App.css';
 
+import { HookUseContext } from './components/HookUseContext';
+
+// Pages
+import Home from './pages/Home';
+import About from './pages/About';
+ 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HookUseContext>
+        <h1>React Hooks</h1>
+        {/* Barra de Navegação */}
+        <BrowserRouter>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+              <br />
+              <Link to="/about">Sobre</Link>
+            </li>
+          </ul>
+
+          {/* Criando Rotas */}
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/about' element={<About />}/>
+        </Routes>
+        </BrowserRouter>
+      </HookUseContext>
     </div>
   );
 }
